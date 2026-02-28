@@ -14,7 +14,7 @@ export function Economics() {
     },
     {
       icon: TrendingUp,
-      title: 'Minimum Withdrawal',
+      title: 'Withdrawal Settings',
       text: t('min_withdrawal')
     },
     {

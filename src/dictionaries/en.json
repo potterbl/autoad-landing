@@ -62,14 +62,14 @@
     },
     "feature4": {
       "title": "Transparent Economics",
-      "description": "Clear fee structure and fast withdrawals",
-      "detail": "5% service fee + 1.5% top-up fee. Crypto withdrawals from 50 USDT, processed instantly to 24h for large amounts."
+      "description": "Clear fee structure and flexible withdrawal settings",
+      "detail": "5% service fee + 1.5% top-up fee. Users can configure automatic withdrawal triggers or process withdrawals manually based on their preferences."
     }
   },
   "economics": {
     "title": "Economics & Withdrawals",
     "service_fee": "Service commission: 5% per successful deal + 1.5% on balance top-up",
-    "min_withdrawal": "Minimum withdrawal: from 50 USDT or equivalent",
+    "min_withdrawal": "Withdrawal settings: configurable auto-withdrawal triggers or manual withdrawal",
     "withdrawal_methods": "Withdrawal methods: TON, USDT (TRC-20/BEP-20) and other integrated systems",
     "withdrawal_speed": "Withdrawal speed: from instant (crypto) to 24 hours (manual moderation for large amounts)"
   },
