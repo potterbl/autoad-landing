@@ -1,13 +1,41 @@
 'use client';
 
 import { useTranslations } from '../lib/i18n';
+import { useParams } from 'next/navigation';
 import { FlyingTriangles } from './FlyingTriangles';
 
 export function Hero() {
   const t = useTranslations('hero');
+  const params = useParams();
+  const locale = params?.locale as string || 'en';
+
+  // JSON-LD structured data for Organization
+  const organizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AutoAd Broker",
+    "description": t('subtitle'),
+    "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://autoad-broker.com'}/${locale}`,
+    "logo": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://autoad-broker.com'}/logo.png`,
+    "sameAs": [
+      "https://t.me/autoadbroker",
+      "https://twitter.com/autoadbroker"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["en", "uk", "ru"]
+    }
+  };
 
   return (
     <section className="relative py-20 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+      {/* JSON-LD for Organization */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
+      />
+
       {/* Flying triangles background */}
       <div className="absolute inset-0">
         <FlyingTriangles />
@@ -30,6 +58,7 @@ export function Hero() {
             <a
               href="#waitlist"
               className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              aria-label={`${t('cta')} - ${t('subtitle')}`}
             >
               {t('cta')}
             </a>

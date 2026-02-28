@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "../components/Analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AutoAd Broker - Telegram Advertising Platform",
-  description: "Automated Telegram advertising exchange with smart calendar and secure transactions. Launch in 2 months.",
+  description: "Automated Telegram advertising exchange with smart calendar and secure transactions. Launch in March 2026.",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
