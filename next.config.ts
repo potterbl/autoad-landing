@@ -6,7 +6,14 @@ const nextConfig: NextConfig = {
 
   // Image optimization
   images: {
-    domains: ['autoad-broker.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'autoad-broker.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
 
