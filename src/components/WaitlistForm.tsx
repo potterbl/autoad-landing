@@ -91,28 +91,32 @@ export function WaitlistForm() {
                   {t('form.role')}
                 </label>
                 <div className="relative">
-                  <div className="flex items-center justify-between bg-gray-400 rounded-lg p-1">
+                  <div className="flex items-stretch bg-gray-400 rounded-lg p-1 gap-1">
                     <button
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, role: 'advertiser' }))}
-                      className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                      className={`flex-1 min-h-11 flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                         formData.role === 'advertiser'
                           ? 'bg-gray-700 text-white shadow-sm'
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
-                      {t('form.role_options.advertiser')}
+                      <span className="text-center leading-tight">
+                        {t('form.role_options.advertiser')}
+                      </span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, role: 'admin' }))}
-                      className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                      className={`flex-1 min-h-11 flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                         formData.role === 'admin'
                           ? 'bg-gray-700 text-white shadow-sm'
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
-                      {t('form.role_options.admin')}
+                      <span className="text-center leading-tight">
+                        {t('form.role_options.admin')}
+                      </span>
                     </button>
                   </div>
                 </div>

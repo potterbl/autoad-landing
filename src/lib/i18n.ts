@@ -15,9 +15,14 @@ export function useTranslations(namespace?: string) {
     const dict = dictionaries[locale] || dictionaries.en;
     const keys = namespace ? `${namespace}.${key}` : key;
 
-    return keys.split('.').reduce((obj: any, k: string) => {
-      return obj && obj[k] !== undefined ? obj[k] : key;
-    }, dict);
+    const result = keys.split('.').reduce((obj: unknown, k: string) => {
+      if (obj && typeof obj === 'object' && k in obj) {
+        return (obj as Record<string, unknown>)[k];
+      }
+      return undefined;
+    }, dict as unknown);
+
+    return typeof result === 'string' ? result : key;
   };
 }
 

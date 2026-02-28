@@ -38,7 +38,8 @@ export function Roadmap() {
           </p>
         </div>
 
-        <div className="relative">
+        {/* Desktop layout */}
+        <div className="relative hidden lg:block">
           {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
 
@@ -82,6 +83,57 @@ export function Roadmap() {
                       )}
                     </div>
                     <p className="text-gray-600 leading-relaxed">
+                      {version.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="lg:hidden">
+          <div className="space-y-8">
+            {versions.map((version, index) => (
+              <div key={version.id} className="relative pl-8">
+                {/* Mobile timeline dot */}
+                <div className="absolute left-0 top-6 z-10">
+                  <div className={`w-4 h-4 rounded-full border-2 border-white shadow-lg ${
+                    version.status === 'current' 
+                      ? 'bg-green-500' 
+                      : version.status === 'planned' 
+                        ? 'bg-blue-500'
+                        : 'bg-gray-400'
+                  }`}></div>
+                </div>
+
+                {/* Mobile content card */}
+                <div className="w-full">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                    <div className="mb-3">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {version.title}
+                        </h3>
+                        {version.status === 'current' && (
+                          <span className="w-fit px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">
+                            {t('status_current')}
+                          </span>
+                        )}
+                        {version.status === 'planned' && (
+                          <span className="w-fit px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                            {t('status_planned')}
+                          </span>
+                        )}
+                        {version.status === 'future' && (
+                          <span className="w-fit px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                            {t('status_future')}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm">
                       {version.description}
                     </p>
                   </div>

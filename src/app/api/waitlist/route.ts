@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Simple in-memory storage for demo purposes
-// In production, you'd want to use a database or external service
-const waitlistEntries: Array<{
+// Type definitions
+interface WaitlistEntry {
   name: string;
   telegram: string;
   role: string;
   comment?: string;
   timestamp: string;
-}> = [];
+}
+
+// Simple in-memory storage for demo purposes
+// In production, you'd want to use a database or external service
+const waitlistEntries: Array<WaitlistEntry> = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -74,7 +77,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Send notification to multiple Telegram recipients
-async function sendToTelegram(entry: any) {
+async function sendToTelegram(entry: WaitlistEntry) {
   const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_IDS = process.env.TELEGRAM_CHAT_ID;
 

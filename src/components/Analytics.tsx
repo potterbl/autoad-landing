@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import Script from 'next/script';
+import Image from 'next/image';
 
 export function Analytics() {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -53,10 +53,12 @@ export function Analytics() {
       {YANDEX_ID && (
         <noscript>
           <div>
-            <img
+            <Image
               src={`https://mc.yandex.ru/watch/${YANDEX_ID}`}
               style={{ position: 'absolute', left: '-9999px' }}
               alt=""
+              width={1}
+              height={1}
             />
           </div>
         </noscript>
