@@ -20,6 +20,10 @@ export function FAQ() {
     {
       question: t('q3.question'),
       answer: t('q3.answer')
+    },
+    {
+      question: t('q4.question'),
+      answer: t('q4.answer')
     }
   ];
 

@@ -7,6 +7,7 @@ import { Economics } from '../../components/Economics';
 import { Roadmap } from '../../components/Roadmap';
 import { Security } from '../../components/Security';
 import { FAQ } from '../../components/FAQ';
+import { FounderSection } from '../../components/FounderSection';
 import { WaitlistForm } from '../../components/WaitlistForm';
 import { Footer } from '../../components/Footer';
 
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Roadmap />
         <Security />
         <FAQ />
+        <FounderSection />
         <WaitlistForm />
       </main>
       <Footer />

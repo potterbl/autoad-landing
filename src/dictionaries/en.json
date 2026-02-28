@@ -121,7 +121,7 @@
     },
     "v2": {
       "title": "V2",
-      "description": "Review and rating system for channel owners with user feedback"
+      "description": "Review and rating system for channel owners with user feedback + Referral system: 2% commission from referred admin deals (out of 5% service commission)"
     },
     "v3": {
       "title": "V3",
@@ -131,17 +131,25 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "q1": {
-      "question": "Why top up balance instead of paying directly?",
-      "answer": "It's faster. If admin rejects your post (pre-moderation), money instantly returns to your app balance, and you can immediately buy placement in another channel without waiting for bank/blockchain refunds."
+      "question": "What if admin deletes my post early?",
+      "answer": "Smart monitoring: Bot checks post every N minutes. If admin deletes it on 23rd hour - 100% money return to buyer."
     },
     "q2": {
-      "question": "How to withdraw earnings?",
-      "answer": "In 'My Channels / Wallet' section, specify amount and choose available method (crypto at launch). When minimum threshold is reached, request goes to processing."
+      "question": "What if my post has errors or wrong links?",
+      "answer": "Fair disputes: If post goes out with error (wrong link/formatting), deal freezes. We check bot logs and resolve dispute fairly."
     },
     "q3": {
-      "question": "What if I topped up balance but changed my mind about buying ads?",
-      "answer": "You can request withdrawal back to your wallet minus payment system fees."
+      "question": "How do you prevent scamming admins?",
+      "answer": "3 strikes rule: Admin gets strike for fraud attempt. 3 strikes = permanent ban of all their channels on platform."
+    },
+    "q4": {
+      "question": "Will this get my Telegram banned?",
+      "answer": "No TG bans: We use official API. Bot only posts where owner added it."
     }
+  },
+  "founder": {
+    "title": "Who's Behind This",
+    "message": "Hi! I'm Vlad, the founder of AutoAd. I used to buy ads in Telegram myself, got tired of scams and routine in DMs, so I decided to create a transparent tool for the market. I'd be happy to chat with you personally!"
   },
   "waitlist": {
     "title": "Reserve your spot for beta test",
