@@ -8,8 +8,8 @@ export function WaitlistForm() {
   const t = useTranslations('waitlist');
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    telegram: ''
+    telegram: '',
+    comment: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -28,7 +28,7 @@ export function WaitlistForm() {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', telegram: '' });
+        setFormData({ name: '', telegram: '', comment: '' });
       } else {
         setStatus('error');
       }
@@ -37,7 +37,7 @@ export function WaitlistForm() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
@@ -68,17 +68,6 @@ export function WaitlistForm() {
             </div>
             <div>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={t('form.email')}
-                required
-                className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
-              />
-            </div>
-            <div>
-              <input
                 type="text"
                 name="telegram"
                 value={formData.telegram}
@@ -86,6 +75,16 @@ export function WaitlistForm() {
                 placeholder={t('form.telegram')}
                 required
                 className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
+              />
+            </div>
+            <div>
+              <textarea
+                name="comment"
+                value={formData.comment}
+                onChange={handleChange}
+                placeholder={t('form.comment')}
+                rows={3}
+                className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200 resize-none"
               />
             </div>
 

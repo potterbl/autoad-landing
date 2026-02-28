@@ -10,22 +10,26 @@ export function Features() {
     {
       icon: Wallet,
       title: t('feature1.title'),
-      description: t('feature1.description')
+      description: t('feature1.description'),
+      detail: t('feature1.detail')
     },
     {
       icon: Calendar,
       title: t('feature2.title'),
-      description: t('feature2.description')
+      description: t('feature2.description'),
+      detail: t('feature2.detail')
     },
     {
       icon: Shield,
       title: t('feature3.title'),
-      description: t('feature3.description')
+      description: t('feature3.description'),
+      detail: t('feature3.detail')
     },
     {
       icon: Percent,
       title: t('feature4.title'),
-      description: t('feature4.description')
+      description: t('feature4.description'),
+      detail: t('feature4.detail')
     }
   ];
 
@@ -38,27 +42,29 @@ export function Features() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+
             return (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg"
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <Icon className="h-8 w-8 text-gray-500" />
+                    <Icon className="h-8 w-8 text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">
                       {feature.title}
                     </h3>
-                    <div className="space-y-2">
-                      <div className="h-2 bg-gray-200 rounded"></div>
-                      <div className="h-2 bg-gray-200 rounded"></div>
-                      <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                    </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {feature.description}
+                    </p>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {feature.detail}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 📝 Waitlist Form Updates
+
+The form now collects:
+- **Full Name** - Required field
+- **Telegram** - Username (@username) or phone number - Required
+- **Comment/Question** - Optional textarea for additional information
+
+## 🔔 Multiple Telegram Recipients
+
+To receive notifications in multiple Telegram chats, set up your `.env.local`:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+# Multiple recipients - separate with commas or new lines:
+TELEGRAM_CHAT_ID=123456789,987654321,555666777
+```
+
+## ✨ UI Improvements
+
+- Removed skeleton loading effects from Features and How It Works sections
+- All content is now displayed immediately for better user experience
+- Hover effects still provide enhanced interactivity
+

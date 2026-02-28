@@ -9,68 +9,106 @@
   },
   "hero": {
     "title": "Telegram advertising without personal messages and waiting",
-    "subtitle": "Automated exchange with smart calendar and secure transactions. Launch in 2 months.",
-    "cta": "Join Beta Test"
+    "subtitle": "AutoAd is an ecosystem for automating Telegram advertising. We eliminated personal chats for admins and long response times for advertisers. All transactions happen through a unified user balance.",
+    "cta": "Join Beta Test",
+    "launch_date": "Launch: March 2026"
   },
   "pain_points": {
     "title": "Tired of these problems?",
     "point1": "Tired of long admin responses?",
-    "point2": "Afraid of scam when buying?",
+    "point2": "Afraid of scam when buying ads?",
     "point3": "Tired of paying for each post separately?",
     "point4": "Spending hours coordinating creatives?"
   },
   "how_it_works": {
-    "title": "How it works",
+    "title": "How AutoAd Works",
     "step1": {
       "title": "Step 01",
-      "description": "Top up unified balance"
+      "description": "Top up unified balance",
+      "detail": "No need to pay for each post separately. Top up your internal wallet through available gateways (TON/USDT, Telegram Stars, or fiat integrations)."
     },
     "step2": {
       "title": "Step 02",
-      "description": "Book slot in a few clicks"
+      "description": "Book slot in a few clicks",
+      "detail": "Smart calendar system: admin sets weekly rules (e.g., Mon: 12:00, 18:00), bot generates the grid. Soft booking reserves slot for 15 minutes."
     },
     "step3": {
       "title": "Step 03",
-      "description": "Bot automatically publishes and checks post"
+      "description": "Bot automatically publishes and monitors",
+      "detail": "Automated posting and 24-hour monitoring ensure your ad stays live as agreed."
     },
     "result": {
       "title": "Result",
-      "description": "Money safely goes to admin - Escrow"
+      "description": "Escrow protection - secure payments",
+      "detail": "Money is held in escrow until post is published and verified, then released to admin's withdrawable balance."
     }
   },
   "features": {
     "title": "Key Features",
     "feature1": {
       "title": "Unified Wallet",
-      "description": "Crypto, Stars, Fiat"
+      "description": "Internal balance system with crypto, Stars, and fiat support",
+      "detail": "Top up once, use everywhere. Instant refunds to your app balance if admin rejects (pre-moderation), no waiting for bank/blockchain returns."
     },
     "feature2": {
       "title": "Smart Calendar",
-      "description": "Slot grid setup for admins"
+      "description": "Automated slot grid generation for admins",
+      "detail": "Set weekly rules, add exceptions in clicks. Soft booking system with 15-minute reservation windows."
     },
     "feature3": {
       "title": "Escrow Protection",
-      "description": "Funds charged only after publication"
+      "description": "Automated payment security for both parties",
+      "detail": "Funds held until publication verified. 24-hour monitoring ensures compliance before releasing payments to admin."
     },
     "feature4": {
-      "title": "Transparent Fees",
-      "description": "1% on deposit, 2.5% on withdrawal (no hidden transaction fees)"
+      "title": "Transparent Economics",
+      "description": "Clear fee structure and fast withdrawals",
+      "detail": "5% service fee + 1.5% top-up fee. Crypto withdrawals from 50 USDT, processed instantly to 24h for large amounts."
+    }
+  },
+  "economics": {
+    "title": "Economics & Withdrawals",
+    "service_fee": "Service commission: 5% per successful deal + 1.5% on balance top-up",
+    "min_withdrawal": "Minimum withdrawal: from 50 USDT or equivalent",
+    "withdrawal_methods": "Withdrawal methods: TON, USDT (TRC-20/BEP-20) and other integrated systems",
+    "withdrawal_speed": "Withdrawal speed: from instant (crypto) to 24 hours (manual moderation for large amounts)"
+  },
+  "security": {
+    "title": "Security & Technology",
+    "transaction_layer": "PostgreSQL stores complete balance change history with unique IDs and audit logs",
+    "payment_queues": "Redis/Celery for processing withdrawal requests and payment API interactions",
+    "security_features": "Two-factor verification for withdrawal details changes and admin violation tracking system"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": {
+      "question": "Why top up balance instead of paying directly?",
+      "answer": "It's faster. If admin rejects your post (pre-moderation), money instantly returns to your app balance, and you can immediately buy placement in another channel without waiting for bank/blockchain refunds."
+    },
+    "q2": {
+      "question": "How to withdraw earnings?",
+      "answer": "In 'My Channels / Wallet' section, specify amount and choose available method (crypto at launch). When minimum threshold is reached, request goes to processing."
+    },
+    "q3": {
+      "question": "What if I topped up balance but changed my mind about buying ads?",
+      "answer": "You can request withdrawal back to your wallet minus payment system fees."
     }
   },
   "waitlist": {
     "title": "Get early access and launch bonuses!",
-    "subtitle": "Leave a request now to get early access and bonuses at launch!",
+    "subtitle": "Join our waitlist now to get early access and exclusive bonuses when AutoAd Broker launches in March 2026!",
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "telegram": "Telegram",
+      "name": "Full Name",
+      "telegram": "Telegram (@username or phone)",
+      "comment": "Comment or Question (optional)",
       "submit": "Join Beta Test",
-      "success": "Thank you! We'll contact you soon.",
+      "success": "Thank you! We'll contact you soon with early access details.",
       "error": "Something went wrong. Please try again."
     }
   },
   "footer": {
     "copyright": "© 2026 AutoAd Broker. All rights reserved.",
-    "launch": "Launch in 2 months"
+    "launch": "Launch in March 2026"
   }
 }
+

@@ -4,29 +4,31 @@ import { NextRequest, NextResponse } from 'next/server';
 // In production, you'd want to use a database or external service
 const waitlistEntries: Array<{
   name: string;
-  email: string;
   telegram: string;
+  comment?: string;
   timestamp: string;
 }> = [];
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, telegram } = body;
+    const { name, telegram, comment } = body;
 
     // Basic validation
-    if (!name || !email || !telegram) {
+    if (!name || !telegram) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'Name and Telegram are required' },
         { status: 400 }
       );
     }
 
-    // Check if email already exists
-    const existingEntry = waitlistEntries.find(entry => entry.email === email);
+    // Check if telegram already exists
+    const existingEntry = waitlistEntries.find(entry =>
+      entry.telegram.toLowerCase() === telegram.toLowerCase()
+    );
     if (existingEntry) {
       return NextResponse.json(
-        { error: 'Email already registered' },
+        { error: 'Telegram already registered' },
         { status: 400 }
       );
     }
@@ -34,23 +36,17 @@ export async function POST(request: NextRequest) {
     // Add to waitlist
     const entry = {
       name: name.trim(),
-      email: email.trim().toLowerCase(),
       telegram: telegram.trim(),
+      comment: comment?.trim() || '',
       timestamp: new Date().toISOString()
     };
 
     waitlistEntries.push(entry);
 
-    // Here you could integrate with:
-    // 1. Google Sheets API
-    // 2. Telegram Bot API to send notifications
-    // 3. Email service (SendGrid, Mailgun, etc.)
-    // 4. Database (PostgreSQL, MongoDB, etc.)
-
-    // For now, just log to console (visible in server logs)
+    // Log to console (visible in server logs)
     console.log('New waitlist entry:', entry);
 
-    // Optional: Send to Telegram Bot
+    // Send to Telegram Bot (multiple recipients)
     await sendToTelegram(entry);
 
     return NextResponse.json(
@@ -67,41 +63,53 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Optional: Send notification to Telegram
+// Send notification to multiple Telegram recipients
 async function sendToTelegram(entry: any) {
   const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  const CHAT_IDS = process.env.TELEGRAM_CHAT_ID;
 
-  if (!BOT_TOKEN || !CHAT_ID) {
+  if (!BOT_TOKEN || !CHAT_IDS) {
     console.log('Telegram integration not configured');
     return;
   }
 
-  try {
-    const message = `🚀 New AutoAd Broker Waitlist Entry!
+  // Split chat IDs by comma or newline and filter out empty values
+  const chatIdList = CHAT_IDS
+    .split(/[,\n]/)
+    .map(id => id.trim())
+    .filter(id => id.length > 0);
 
-👤 Name: ${entry.name}
-📧 Email: ${entry.email}
-💬 Telegram: ${entry.telegram}
-⏰ Time: ${new Date(entry.timestamp).toLocaleString()}`;
+  const message = `🚀 Новая заявка на AutoAd Broker!
 
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'HTML'
-      }),
-    });
+👤 Имя: ${entry.name}
+💬 Telegram: ${entry.telegram}${entry.comment ? `\n📝 Комментарий: ${entry.comment}` : ''}
+⏰ Время: ${new Date(entry.timestamp).toLocaleString('ru-RU')}
 
-    if (!response.ok) {
-      console.error('Failed to send Telegram message:', await response.text());
+#AutoAdBroker #Waitlist`;
+
+  // Send message to each chat ID
+  for (const chatId of chatIdList) {
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML'
+        }),
+      });
+
+      if (!response.ok) {
+        console.error(`Failed to send Telegram message to ${chatId}:`, await response.text());
+      } else {
+        console.log(`✅ Message sent to chat ID: ${chatId}`);
+      }
+    } catch (error) {
+      console.error(`Error sending to Telegram chat ${chatId}:`, error);
     }
-  } catch (error) {
-    console.error('Error sending to Telegram:', error);
   }
 }
 
@@ -112,7 +120,7 @@ export async function GET() {
     count: waitlistEntries.length,
     entries: waitlistEntries.map(entry => ({
       ...entry,
-      email: entry.email.replace(/(.{2}).*(@.*)/, '$1***$2') // Mask email for privacy
+      telegram: entry.telegram.replace(/(.{2}).*(@.*)/, '$1***$2') // Mask telegram for privacy
     }))
   });
 }

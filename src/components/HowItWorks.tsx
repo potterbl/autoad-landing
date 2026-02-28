@@ -1,10 +1,36 @@
 'use client';
 
 import { useTranslations } from '../lib/i18n';
-import { Smartphone } from 'lucide-react';
 
 export function HowItWorks() {
   const t = useTranslations('how_it_works');
+
+  const steps = [
+    {
+      id: 'step1',
+      title: t('step1.title'),
+      description: t('step1.description'),
+      detail: t('step1.detail')
+    },
+    {
+      id: 'step2',
+      title: t('step2.title'),
+      description: t('step2.description'),
+      detail: t('step2.detail')
+    },
+    {
+      id: 'step3',
+      title: t('step3.title'),
+      description: t('step3.description'),
+      detail: t('step3.detail')
+    },
+    {
+      id: 'result',
+      title: t('result.title'),
+      description: t('result.description'),
+      detail: t('result.detail')
+    }
+  ];
 
   return (
     <section className="py-20 bg-white">
@@ -16,29 +42,27 @@ export function HowItWorks() {
         </div>
 
         <div className="relative">
-          <div className="flex flex-col lg:flex-row items-start justify-center lg:justify-between max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-start justify-center lg:justify-between max-w-6xl mx-auto">
             {/* Left Steps */}
             <div className="lg:w-1/3 space-y-16 lg:pt-8">
-              <div className="text-left">
-                <div className="bg-gray-200 rounded-lg p-4 mb-4">
-                  <div className="text-sm font-semibold text-gray-600 mb-2">
-                    {t('step1.title')}
+              {steps.slice(0, 2).map((step, index) => (
+                <div
+                  key={step.id}
+                  className="text-left"
+                >
+                  <div className="bg-gray-200 rounded-lg p-6 hover:bg-gray-300 transition-colors duration-200">
+                    <div className="text-sm font-semibold text-blue-600 mb-3">
+                      {step.title}
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">
+                      {step.description}
+                    </h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {step.detail}
+                    </p>
                   </div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded w-3/4"></div>
                 </div>
-              </div>
-              <div className="text-left">
-                <div className="bg-gray-200 rounded-lg p-4 mb-4">
-                  <div className="text-sm font-semibold text-gray-600 mb-2">
-                    {t('step2.title')}
-                  </div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded w-2/3"></div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Center Phone */}
@@ -52,26 +76,24 @@ export function HowItWorks() {
 
             {/* Right Steps */}
             <div className="lg:w-1/3 space-y-16 lg:pt-8">
-              <div className="text-left">
-                <div className="bg-gray-200 rounded-lg p-4 mb-4">
-                  <div className="text-sm font-semibold text-gray-600 mb-2">
-                    {t('step3.title')}
+              {steps.slice(2, 4).map((step, index) => (
+                <div
+                  key={step.id}
+                  className="text-left"
+                >
+                  <div className="bg-gray-200 rounded-lg p-6 hover:bg-gray-300 transition-colors duration-200">
+                    <div className="text-sm font-semibold text-green-600 mb-3">
+                      {step.title}
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">
+                      {step.description}
+                    </h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {step.detail}
+                    </p>
                   </div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded w-4/5"></div>
                 </div>
-              </div>
-              <div className="text-left">
-                <div className="bg-gray-200 rounded-lg p-4 mb-4">
-                  <div className="text-sm font-semibold text-gray-600 mb-2">
-                    {t('result.title')}
-                  </div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded mb-2"></div>
-                  <div className="h-2 bg-gray-400 rounded w-3/4"></div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
