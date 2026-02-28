@@ -1,0 +1,126 @@
+'use client';
+
+import { useTranslations } from '../lib/i18n';
+import { useState } from 'react';
+import { Send } from 'lucide-react';
+
+export function WaitlistForm() {
+  const t = useTranslations('waitlist');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    telegram: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', telegram: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  return (
+    <section id="waitlist" className="py-20 bg-gray-200">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            {t('title')}
+          </h2>
+        </div>
+
+        <div className="bg-gray-200 rounded-2xl p-8">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder={t('form.name')}
+                required
+                className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder={t('form.email')}
+                required
+                className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="telegram"
+                value={formData.telegram}
+                onChange={handleChange}
+                placeholder={t('form.telegram')}
+                required
+                className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
+              />
+            </div>
+
+            <div className="pt-4">
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full bg-gray-700 hover:bg-gray-800 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === 'loading' ? (
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5" />
+                    <span>{t('form.submit')}</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {status === 'success' && (
+              <div className="text-center text-green-700 bg-green-100 py-2 px-4 rounded-lg">
+                {t('form.success')}
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="text-center text-red-700 bg-red-100 py-2 px-4 rounded-lg">
+                {t('form.error')}
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+

@@ -1,0 +1,76 @@
+{
+  "header": {
+    "title": "AutoAd Broker",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "ru": "Русский"
+    }
+  },
+  "hero": {
+    "title": "Telegram advertising without personal messages and waiting",
+    "subtitle": "Automated exchange with smart calendar and secure transactions. Launch in 2 months.",
+    "cta": "Join Beta Test"
+  },
+  "pain_points": {
+    "title": "Tired of these problems?",
+    "point1": "Tired of long admin responses?",
+    "point2": "Afraid of scam when buying?",
+    "point3": "Tired of paying for each post separately?",
+    "point4": "Spending hours coordinating creatives?"
+  },
+  "how_it_works": {
+    "title": "How it works",
+    "step1": {
+      "title": "Step 01",
+      "description": "Top up unified balance"
+    },
+    "step2": {
+      "title": "Step 02",
+      "description": "Book slot in a few clicks"
+    },
+    "step3": {
+      "title": "Step 03",
+      "description": "Bot automatically publishes and checks post"
+    },
+    "result": {
+      "title": "Result",
+      "description": "Money safely goes to admin - Escrow"
+    }
+  },
+  "features": {
+    "title": "Key Features",
+    "feature1": {
+      "title": "Unified Wallet",
+      "description": "Crypto, Stars, Fiat"
+    },
+    "feature2": {
+      "title": "Smart Calendar",
+      "description": "Slot grid setup for admins"
+    },
+    "feature3": {
+      "title": "Escrow Protection",
+      "description": "Funds charged only after publication"
+    },
+    "feature4": {
+      "title": "Transparent Fees",
+      "description": "1% on deposit, 2.5% on withdrawal (no hidden transaction fees)"
+    }
+  },
+  "waitlist": {
+    "title": "Get early access and launch bonuses!",
+    "subtitle": "Leave a request now to get early access and bonuses at launch!",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "telegram": "Telegram",
+      "submit": "Join Beta Test",
+      "success": "Thank you! We'll contact you soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 AutoAd Broker. All rights reserved.",
+    "launch": "Launch in 2 months"
+  }
+}
