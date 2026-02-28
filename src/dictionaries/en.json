@@ -8,10 +8,11 @@
     }
   },
   "hero": {
-    "title": "Telegram advertising without personal messages and waiting",
-    "subtitle": "AutoAd is an ecosystem for automating Telegram advertising. We eliminated personal chats for admins and long response times for advertisers. All transactions happen through a unified user balance.",
-    "cta": "Join Beta Test",
-    "launch_date": "Launch: March 2026"
+    "title": "Stop scam and routine in DMs. Safe buying and selling of Telegram ads.",
+    "subtitle": "Automated marketplace with smart calendar and Escrow deals. No long conversations. No transfers to strangers on trust.",
+    "cta": "Get early access (50% commission discount)",
+    "launch_date": "Launch: March 2026",
+    "demo_placeholder": "[GIF: Booking slot flow demonstration in 3 clicks]"
   },
   "pain_points": {
     "title": "Tired of these problems?",
@@ -21,26 +22,46 @@
     "point4": "Spending hours coordinating creatives?"
   },
   "how_it_works": {
-    "title": "How AutoAd Works",
+    "title": "How it works (3 quick steps)",
     "step1": {
-      "title": "Step 01",
-      "description": "Top up unified balance",
-      "detail": "No need to pay for each post separately. Top up your internal wallet through available gateways (TON/USDT, Telegram Stars, or fiat integrations)."
+      "title": "Step 1",
+      "description": "Link in Bio",
+      "detail": "Admin posts a link, advertiser sees smart calendar of available slots."
     },
     "step2": {
-      "title": "Step 02",
-      "description": "Book slot in a few clicks",
-      "detail": "Smart calendar system: admin sets weekly rules (e.g., Mon: 12:00, 18:00), bot generates the grid. Soft booking reserves slot for 15 minutes."
+      "title": "Step 2",
+      "description": "Unified Balance",
+      "detail": "Payment in a few clicks. Money is held in system (Escrow), not sent directly to admin."
     },
     "step3": {
-      "title": "Step 03",
-      "description": "Bot automatically publishes and monitors",
-      "detail": "Automated posting and 24-hour monitoring ensure your ad stays live as agreed."
+      "title": "Step 3",
+      "description": "Auto-posting",
+      "detail": "Bot publishes the post and transfers money to admin only after successful verification."
     },
     "result": {
       "title": "Result",
       "description": "Escrow protection - secure payments",
       "detail": "Money is held in escrow until post is published and verified, then released to admin's withdrawable balance."
+    }
+  },
+  "guarantees": {
+    "title": "Security and Guarantees",
+    "subtitle": "Your protection is our priority",
+    "guarantee1": {
+      "title": "Smart Monitoring",
+      "description": "Bot checks post every N minutes. If admin deletes it on 23rd hour - money returns to buyer."
+    },
+    "guarantee2": {
+      "title": "Auto-deletion",
+      "description": "After 24 hours bot automatically deletes ad post and transfers money to admin. No alarms needed."
+    },
+    "guarantee3": {
+      "title": "3 Strikes Rule",
+      "description": "For fraud attempts (link substitution, early deletion) - instant refund to buyer. 3 strikes = permanent ban of admin and channels."
+    },
+    "guarantee4": {
+      "title": "Absolutely Legal",
+      "description": "Bot works through official Telegram API only in channels where admin added it. Zero risk of TG bans."
     }
   },
   "features": {
@@ -67,17 +88,37 @@
     }
   },
   "economics": {
-    "title": "Economics & Withdrawals",
-    "service_fee": "Service commission: 5% per successful deal + 1.5% on balance top-up",
-    "min_withdrawal": "Withdrawal settings: configurable auto-withdrawal triggers or manual withdrawal",
-    "withdrawal_methods": "Withdrawal methods: TON, USDT (TRC-20/BEP-20) and other integrated systems",
-    "withdrawal_speed": "Withdrawal speed: from instant (crypto) to 24 hours (manual moderation for large amounts)"
+    "title": "Transparent Economics",
+    "subtitle": "Fair and clear commissions",
+    "deposit_title": "Deposit",
+    "service_fee_title": "Successful Deal",
+    "withdrawal_title": "Withdrawal",
+    "deposit": "1.5% (gateway fees coverage)",
+    "service_fee": "5% service commission (charged only if post successfully published and stayed up for required time)",
+    "withdrawal": "0% platform commission",
+    "withdrawal_settings_label": "Withdrawal Settings",
+    "withdrawal_methods_label": "Withdrawal Methods",
+    "min_withdrawal": "configurable auto-withdrawal triggers or manual withdrawal",
+    "withdrawal_methods": "TON, USDT (TRC-20/BEP-20) and other integrated systems",
+    "withdrawal_speed": "from instant (crypto) to 24 hours (manual moderation for large amounts)"
   },
   "security": {
     "title": "Security & Technology",
     "transaction_layer": "PostgreSQL stores complete balance change history with unique IDs and audit logs",
     "payment_queues": "Redis/Celery for processing withdrawal requests and payment API interactions",
     "security_features": "Two-factor verification for withdrawal details changes and admin violation tracking system"
+  },
+  "roadmap": {
+    "title": "Roadmap - What's Next",
+    "subtitle": "Our development plans",
+    "v1": {
+      "title": "V1 (Coming Soon)",
+      "description": "Escrow, Smart Calendar, Unified Balance"
+    },
+    "v2": {
+      "title": "V2 (Planned)",
+      "description": "Integration with TGStat/Telemetr for real engagement display and protection from bot-inflated channels"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -95,8 +136,8 @@
     }
   },
   "waitlist": {
-    "title": "Get early access and launch bonuses!",
-    "subtitle": "Join our waitlist now to get early access and exclusive bonuses when AutoAd Broker launches in March 2026!",
+    "title": "Reserve your spot for beta test",
+    "subtitle": "Apply now. First users get permanently frozen service commission - 2.5% instead of 5%.",
     "form": {
       "name": "Full Name",
       "email": "Email Address",

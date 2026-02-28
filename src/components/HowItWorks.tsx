@@ -8,27 +8,24 @@ export function HowItWorks() {
   const steps = [
     {
       id: 'step1',
-      title: t('step1.title'),
-      description: t('step1.description'),
+      number: '1',
+      icon: '🔗',
+      title: t('step1.description'),
       detail: t('step1.detail')
     },
     {
       id: 'step2',
-      title: t('step2.title'),
-      description: t('step2.description'),
+      number: '2',
+      icon: '💰',
+      title: t('step2.description'),
       detail: t('step2.detail')
     },
     {
       id: 'step3',
-      title: t('step3.title'),
-      description: t('step3.description'),
+      number: '3',
+      icon: '🤖',
+      title: t('step3.description'),
       detail: t('step3.detail')
-    },
-    {
-      id: 'result',
-      title: t('result.title'),
-      description: t('result.description'),
-      detail: t('result.detail')
     }
   ];
 
@@ -41,54 +38,26 @@ export function HowItWorks() {
           </h2>
         </div>
 
-        <div className="relative">
-          <div className="flex flex-col lg:flex-row items-start justify-center lg:justify-between max-w-6xl mx-auto">
-            {/* Left Steps */}
-            <div className="lg:w-1/3 space-y-16 lg:pt-8">
-              {steps.slice(0, 2).map((step, index) => (
-                <div
-                  key={step.id}
-                  className="text-left"
-                >
-                  <div className="bg-gray-200 rounded-lg p-6 hover:bg-gray-300 transition-colors duration-200">
-                    <div className="text-sm font-semibold text-blue-600 mb-3">
-                      {step.title}
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">
-                      {step.description}
-                    </h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      {step.detail}
-                    </p>
+        {/* Desktop horizontal layout */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* Connection line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-200 via-purple-200 to-green-200 transform -translate-y-1/2 z-0"></div>
+
+            <div className="grid grid-cols-3 gap-8 relative z-10">
+              {steps.map((step) => (
+                <div key={step.id} className="text-center">
+                  <div className="bg-white border-4 border-blue-100 rounded-full w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+                    <span className="text-3xl">{step.icon}</span>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Center Phone */}
-            <div className="lg:w-1/3 flex justify-center my-12 lg:my-0">
-              <div className="bg-white p-4 rounded-3xl shadow-xl border-4 border-gray-900">
-                <div className="w-20 h-40 bg-white rounded-2xl flex items-center justify-center">
-                  <div className="w-12 h-1 bg-gray-900 rounded-full mb-32"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Steps */}
-            <div className="lg:w-1/3 space-y-16 lg:pt-8">
-              {steps.slice(2, 4).map((step, index) => (
-                <div
-                  key={step.id}
-                  className="text-left"
-                >
-                  <div className="bg-gray-200 rounded-lg p-6 hover:bg-gray-300 transition-colors duration-200">
-                    <div className="text-sm font-semibold text-green-600 mb-3">
-                      {step.title}
+                  <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="inline-flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-bold mb-4">
+                      {step.number}
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">
-                      {step.description}
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      {step.title}
                     </h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed">
                       {step.detail}
                     </p>
                   </div>
@@ -97,8 +66,31 @@ export function HowItWorks() {
             </div>
           </div>
         </div>
+
+        {/* Mobile vertical layout */}
+        <div className="lg:hidden space-y-8">
+          {steps.map((step) => (
+            <div key={step.id} className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-lg font-bold">
+                  {step.number}
+                </div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 flex-1">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">{step.icon}</span>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  {step.detail}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
