@@ -4,6 +4,15 @@ import { generateSEOMetadata } from '../../lib/seo';
 
 const locales = ['en', 'uk', 'ru'];
 
+// Import dictionaries
+async function getDictionary(locale: string) {
+  try {
+    return (await import(`../../dictionaries/${locale}.json`)).default;
+  } catch {
+    return (await import(`../../dictionaries/en.json`)).default;
+  }
+}
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -36,6 +45,8 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const dictionary = await getDictionary(locale);
+
   return (
     <html lang={locale}>
       <head>
@@ -64,11 +75,7 @@ export default async function LocaleLayout({
               "@type": "WebSite",
               "name": "AutoAd Broker",
               "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://autoad-broker.com'}/${locale}`,
-              "description": locale === 'ru'
-                ? "Автоматизированная платформа Telegram-рекламы с единым кошельком и escrow-защитой"
-                : locale === 'uk'
-                ? "Автоматизована платформа Telegram-реклами з єдиним гаманцем та escrow-захистом"
-                : "Automated Telegram advertising platform with unified wallet and escrow protection",
+              "description": dictionary.header.seo_description,
               "inLanguage": locale === 'uk' ? 'uk-UA' : locale === 'ru' ? 'ru-RU' : 'en-US',
               "potentialAction": {
                 "@type": "SearchAction",

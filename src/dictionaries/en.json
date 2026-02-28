@@ -1,6 +1,7 @@
 {
   "header": {
     "title": "AutoAd Broker",
+    "seo_description": "Automated Telegram advertising platform with unified wallet and escrow protection",
     "languages": {
       "en": "English",
       "uk": "Українська",
@@ -67,9 +68,9 @@
   "features": {
     "title": "Key Features",
     "feature1": {
-      "title": "Unified Wallet",
-      "description": "Internal balance system with crypto, Stars, and fiat support",
-      "detail": "Top up once, use everywhere. Instant refunds to your app balance if admin rejects (pre-moderation), no waiting for bank/blockchain returns."
+      "title": "Channel Marketplace",
+      "description": "Convenient catalog of channels organized by genres, ratings and reviews",
+      "detail": "Inside the bot there will be a marketplace with channels divided by genres, reviews and other criteria for convenient search and selection."
     },
     "feature2": {
       "title": "Smart Calendar",
@@ -82,9 +83,9 @@
       "detail": "Funds held until publication verified. 24-hour monitoring ensures compliance before releasing payments to admin."
     },
     "feature4": {
-      "title": "Transparent Economics",
-      "description": "Clear fee structure and flexible withdrawal settings",
-      "detail": "5% service fee + 1.5% top-up fee. Users can configure automatic withdrawal triggers or process withdrawals manually based on their preferences."
+      "title": "Double Moderation",
+      "description": "Posts go through channel owner moderation, then manager review",
+      "detail": "Channel owners can reject posts with reason. For severe violations, the buyer will be blocked after manager verification."
     }
   },
   "economics": {
@@ -93,7 +94,7 @@
     "deposit_title": "Deposit",
     "service_fee_title": "Successful Deal",
     "withdrawal_title": "Withdrawal",
-    "deposit": "1.5% (gateway fees coverage)",
+    "deposit": "1.5% service commission (in addition to payment system fees). Detailed invoice with all commissions breakdown will be provided",
     "service_fee": "5% service commission (charged only if post successfully published and stayed up for required time)",
     "withdrawal": "0% platform commission",
     "withdrawal_settings_label": "Withdrawal Settings",
@@ -111,12 +112,19 @@
   "roadmap": {
     "title": "Roadmap - What's Next",
     "subtitle": "Our development plans",
+    "status_current": "Coming Soon",
+    "status_planned": "Planned",
+    "status_future": "Future",
     "v1": {
-      "title": "V1 (Coming Soon)",
-      "description": "Escrow, Smart Calendar, Unified Balance"
+      "title": "V1",
+      "description": "Escrow, Smart Calendar, Unified Balance, Channel Marketplace"
     },
     "v2": {
-      "title": "V2 (Planned)",
+      "title": "V2",
+      "description": "Review and rating system for channel owners with user feedback"
+    },
+    "v3": {
+      "title": "V3",
       "description": "Integration with TGStat/Telemetr for real engagement display and protection from bot-inflated channels"
     }
   },

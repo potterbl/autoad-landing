@@ -17,6 +17,12 @@ export function Roadmap() {
       status: 'planned',
       title: t('v2.title'),
       description: t('v2.description')
+    },
+    {
+      id: 'v3',
+      status: 'future',
+      title: t('v3.title'),
+      description: t('v3.description')
     }
   ];
 
@@ -44,7 +50,9 @@ export function Roadmap() {
                   <div className={`w-6 h-6 rounded-full border-4 border-white shadow-lg ${
                     version.status === 'current' 
                       ? 'bg-green-500' 
-                      : 'bg-blue-500'
+                      : version.status === 'planned' 
+                        ? 'bg-blue-500'
+                        : 'bg-gray-400'
                   }`}></div>
                 </div>
 
@@ -59,12 +67,17 @@ export function Roadmap() {
                       </h3>
                       {version.status === 'current' && (
                         <span className="ml-3 px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                          Скоро
+                          {t('status_current')}
                         </span>
                       )}
                       {version.status === 'planned' && (
                         <span className="ml-3 px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                          Планируется
+                          {t('status_planned')}
+                        </span>
+                      )}
+                      {version.status === 'future' && (
+                        <span className="ml-3 px-3 py-1 bg-gray-100 text-gray-600 text-sm font-medium rounded-full">
+                          {t('status_future')}
                         </span>
                       )}
                     </div>
