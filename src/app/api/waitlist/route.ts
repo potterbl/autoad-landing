@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const waitlistEntries: Array<{
   name: string;
   telegram: string;
+  role: string;
   comment?: string;
   timestamp: string;
 }> = [];
@@ -12,12 +13,20 @@ const waitlistEntries: Array<{
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, telegram, comment } = body;
+    const { name, telegram, role, comment } = body;
 
     // Basic validation
-    if (!name || !telegram) {
+    if (!name || !telegram || !role) {
       return NextResponse.json(
-        { error: 'Name and Telegram are required' },
+        { error: 'Name, telegram, and role are required' },
+        { status: 400 }
+      );
+    }
+
+    // Validate role
+    if (!['advertiser', 'admin'].includes(role)) {
+      return NextResponse.json(
+        { error: 'Invalid role specified' },
         { status: 400 }
       );
     }
@@ -37,6 +46,7 @@ export async function POST(request: NextRequest) {
     const entry = {
       name: name.trim(),
       telegram: telegram.trim(),
+      role: role.trim(),
       comment: comment?.trim() || '',
       timestamp: new Date().toISOString()
     };
@@ -79,13 +89,14 @@ async function sendToTelegram(entry: any) {
     .map(id => id.trim())
     .filter(id => id.length > 0);
 
-  const message = `🚀 Новая заявка на AutoAd Broker!
+  const message = `🚀 Новая заявка на предрегистрацию AutoAd Broker!
 
 👤 Имя: ${entry.name}
-💬 Telegram: ${entry.telegram}${entry.comment ? `\n📝 Комментарий: ${entry.comment}` : ''}
+💬 Telegram: ${entry.telegram}
+🎯 Роль: ${entry.role === 'advertiser' ? 'Заказчик рекламы' : 'Администратор канала'}${entry.comment ? `\n📝 Комментарий: ${entry.comment}` : ''}
 ⏰ Время: ${new Date(entry.timestamp).toLocaleString('ru-RU')}
 
-#AutoAdBroker #Waitlist`;
+#AutoAdBroker #PreRegistration #${entry.role === 'advertiser' ? 'Advertiser' : 'ChannelAdmin'}`;
 
   // Send message to each chat ID
   for (const chatId of chatIdList) {

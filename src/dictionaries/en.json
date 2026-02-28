@@ -99,9 +99,15 @@
     "subtitle": "Join our waitlist now to get early access and exclusive bonuses when AutoAd Broker launches in March 2026!",
     "form": {
       "name": "Full Name",
+      "email": "Email Address",
       "telegram": "Telegram (@username or phone)",
+      "role": "I am:",
+      "role_options": {
+        "advertiser": "Advertiser (looking to buy ad placements)",
+        "admin": "Channel Admin (looking to sell ad placements)"
+      },
       "comment": "Comment or Question (optional)",
-      "submit": "Join Beta Test",
+      "submit": "Join Pre-Registration",
       "success": "Thank you! We'll contact you soon with early access details.",
       "error": "Something went wrong. Please try again."
     }

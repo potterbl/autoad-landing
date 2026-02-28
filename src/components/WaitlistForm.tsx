@@ -9,12 +9,20 @@ export function WaitlistForm() {
   const [formData, setFormData] = useState({
     name: '',
     telegram: '',
+    role: '',
     comment: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate role selection
+    if (!formData.role) {
+      setStatus('error');
+      return;
+    }
+
     setStatus('loading');
 
     try {
@@ -28,11 +36,11 @@ export function WaitlistForm() {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', telegram: '', comment: '' });
+        setFormData({ name: '', telegram: '', role: '', comment: '' });
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     }
   };
@@ -76,6 +84,39 @@ export function WaitlistForm() {
                 required
                 className="w-full px-4 py-3 bg-gray-400 placeholder-gray-600 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
               />
+            </div>
+            <div>
+              <div className="space-y-3">
+                <label className="block text-gray-700 text-sm font-medium">
+                  {t('form.role')}
+                </label>
+                <div className="relative">
+                  <div className="flex items-center justify-between bg-gray-400 rounded-lg p-1">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, role: 'advertiser' }))}
+                      className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                        formData.role === 'advertiser'
+                          ? 'bg-gray-700 text-white shadow-sm'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      {t('form.role_options.advertiser')}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, role: 'admin' }))}
+                      className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                        formData.role === 'admin'
+                          ? 'bg-gray-700 text-white shadow-sm'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      {t('form.role_options.admin')}
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
               <textarea
