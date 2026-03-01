@@ -3,11 +3,24 @@
 import { useTranslations } from '../lib/i18n';
 import { useParams } from 'next/navigation';
 import { FlyingTriangles } from './FlyingTriangles';
+import Image from 'next/image';
 
 export function Hero() {
   const t = useTranslations('hero');
   const params = useParams();
   const locale = params?.locale as string || 'en';
+
+  // Map locale to GIF filename
+  const getGifForLocale = (locale: string) => {
+    switch (locale) {
+      case 'ru':
+        return '/ru.gif';
+      case 'uk':
+        return '/ukr.gif';
+      default:
+        return '/en.gif';
+    }
+  };
 
   // JSON-LD structured data for Organization
   const organizationData = {
@@ -42,13 +55,13 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left side - Content */}
-          <div className="text-left lg:text-left">
+          <div className="text-center lg:text-left order-1 lg:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8">
               {t('title')}
             </h1>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl mx-auto lg:mx-0">
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
                 {t('subtitle')}
               </p>
@@ -67,31 +80,21 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right side - Phone mockup */}
-          <div className="lg:block hidden">
-            <div className="relative mx-auto max-w-sm">
+          {/* Right side - Phone mockup - Always visible with fixed dimensions */}
+          <div className="flex justify-center lg:justify-end order-2 lg:order-2">
+            <div className="relative" style={{ width: '384px', height: '624px' }}>
               {/* Phone frame */}
-              <div className="relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="relative bg-black rounded-[2rem] p-1">
-                  <div className="bg-white rounded-[1.5rem] overflow-hidden h-[600px]">
-                    {/* Phone screen content */}
-                    <div className="h-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-8">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </div>
-                        <div className="text-sm text-gray-600 leading-relaxed">
-                          {t('demo_placeholder')}
-                        </div>
-                        <div className="mt-6 space-y-2">
-                          <div className="h-3 bg-blue-200 rounded animate-pulse"></div>
-                          <div className="h-3 bg-purple-200 rounded animate-pulse"></div>
-                          <div className="h-3 bg-blue-200 rounded w-3/4 animate-pulse"></div>
-                        </div>
-                      </div>
-                    </div>
+              <div className="relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl w-full h-full">
+                <div className="relative bg-black rounded-[2rem] p-1 w-full h-full">
+                  <div className="bg-white rounded-[1.5rem] overflow-hidden relative w-full h-full">
+                    {/* Phone screen content - GIF Preview */}
+                    <Image
+                      src={getGifForLocale(locale)}
+                      alt={`AutoAd Broker Preview - ${locale.toUpperCase()}`}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
                   </div>
                   {/* Phone notch */}
                   <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gray-800 rounded-full"></div>
